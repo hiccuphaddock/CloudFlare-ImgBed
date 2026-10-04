@@ -48,9 +48,12 @@ jobs:
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4
         with:
           upstream_sync_repo: MarSeventh/CloudFlare-ImgBed
+          upstream_repo_access_token: ${{ secrets.GITHUB_TOKEN }}
           upstream_sync_branch: main
           target_sync_branch: main
-          target_repo_token: ${{ secrets.UPSTREAM_SYNC_TOKEN }}
+          # REQUIRED 'target_repo_token' exactly like this!
+          target_repo_token: ${{ secrets.GITHUB_TOKEN }}
+          //target_repo_token: ${{ secrets.UPSTREAM_SYNC_TOKEN }}
           test_mode: false
 
       - name: Complete breaking update notices
